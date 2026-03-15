@@ -60,8 +60,9 @@ export default function Vault() {
   const getAllPassword = async () => {
     setLoader(true);
     try {
-      const response = await axios.get(
+      const response = await axios.post(  // ✅ FIXED: was axios.get
         `/api/password-vault/get-all`,
+        {},
         {
           withCredentials: true,
           headers: {
@@ -194,7 +195,6 @@ export default function Vault() {
     if (!value) {
       getAllPassword();
     } else {
-      // Basic client side filter or could call an API
       const searchResult = getSavedPasswd.filter((passwd) =>
         new RegExp(value, "i").test(passwd.name)
       );

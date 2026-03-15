@@ -57,8 +57,9 @@ export default function Notes() {
   const getAllNote = async () => {
     setLoader(true);
     try {
-      const response = await axios.get(
+      const response = await axios.post(  // ✅ FIXED: was axios.get
         `/api/note/get-all`,
+        {},
         {
           withCredentials: true,
           headers: {
@@ -208,8 +209,9 @@ export default function Notes() {
     if (newFavorite) {
       setLoader(true);
       try {
-        const response = await axios.get(
+        const response = await axios.post(  // ✅ FIXED: was axios.get
           `/api/note/get-favorite`,
+          {},
           {
             withCredentials: true,
             headers: {
