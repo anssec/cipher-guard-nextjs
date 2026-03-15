@@ -6,7 +6,7 @@ const secureNotesSchema = new mongoose.Schema({
   notes: { type: String },
   encrypt: { type: Boolean, default: false },
   email: { type: String, select: false },
-});
+}, { timestamps: true });
 
 export default mongoose.models.securenotes ||
   mongoose.model("securenotes", secureNotesSchema);

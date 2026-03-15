@@ -9,8 +9,8 @@ export function apiResponse(
   return NextResponse.json(
     {
       success,
-      message: message ?? undefined,
-      data: data ?? undefined,
+      ...(message != null && { message }),
+      ...(data != null && { data }),
     },
     { status }
   );

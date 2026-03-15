@@ -11,7 +11,7 @@ const passwordVaultSchema = new mongoose.Schema({
   Created: { type: String, trim: true },
   passwordUpdated: { type: String, trim: true },
   passwordHistory: { type: Number, trim: true, default: 0 },
-});
+}, { timestamps: true });
 
 export default mongoose.models.passwordVault ||
   mongoose.model("passwordVault", passwordVaultSchema);

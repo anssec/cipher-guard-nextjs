@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const MONGODB = process.env.MONGODB!;
+const MONGODB = process.env.MONGODB;
 
 if (!MONGODB) {
   throw new Error("Please define the MONGODB environment variable in .env.local");
@@ -26,7 +26,7 @@ export async function connectDB() {
   if (cached.conn) return cached.conn;
 
   if (!cached.promise) {
-    cached.promise = mongoose.connect(MONGODB).then((m) => {
+    cached.promise = mongoose.connect(MONGODB!).then((m) => {
       console.log("DB Connected Successfully");
       return m;
     });

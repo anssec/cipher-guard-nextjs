@@ -23,6 +23,6 @@ const userSchema = new mongoose.Schema({
   role: { type: String, default: "user" },
   emergencyMail: { type: String, trim: true },
   emergencyAccessPasswd: { type: String },
-});
+}, { timestamps: true });
 
 export default mongoose.models.user || mongoose.model("user", userSchema);
