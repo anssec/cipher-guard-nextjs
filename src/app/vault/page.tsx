@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import JSCookies from "js-cookie";
@@ -261,7 +260,18 @@ export default function Vault() {
                       >
                         <div className="w-10 h-10 flex-shrink-0 bg-white rounded-full p-2 shadow-sm border border-neutral-100 overflow-hidden flex items-center justify-center">
                           {value.websiteFavicon ? (
-                            <Image src={value.websiteFavicon} alt={value.name} width={24} height={24} className="w-full h-full object-contain" />
+                            // eslint-disable-next-line @next/next/no-img-element
+                            <img
+                              src={value.websiteFavicon}
+                              alt={value.name}
+                              width={24}
+                              height={24}
+                              className="w-full h-full object-contain"
+                              onError={(e) => {
+                                (e.currentTarget as HTMLImageElement).src = "";
+                                (e.currentTarget as HTMLImageElement).style.display = "none";
+                              }}
+                            />
                           ) : (
                             <PiVaultLight className="w-5 h-5 text-neutral-400" />
                           )}
