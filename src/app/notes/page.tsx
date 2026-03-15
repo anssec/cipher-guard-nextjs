@@ -110,8 +110,9 @@ export default function Notes() {
   const handleEditNotesTrash = async () => {
     try {
       setLoader(true);
-      const response = await axios.delete(
+      const response = await axios.post(  // ✅ FIXED: was axios.delete
         `/api/note/delete/${currentEditId}`,
+        {},
         {
           withCredentials: true,
           headers: {

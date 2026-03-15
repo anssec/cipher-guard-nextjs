@@ -113,8 +113,9 @@ export default function Vault() {
   const handleEditPassUnameTrash = async () => {
     try {
       setLoader(true);
-      const response = await axios.delete(
+      const response = await axios.post(  // ✅ FIXED: was axios.delete
         `/api/password-vault/delete/${currentEditId}`,
+        {},
         {
           withCredentials: true,
           headers: {
